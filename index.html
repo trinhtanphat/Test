@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://kit.fontawesome.com/2f68485690.js" crossorigin="anonymous"></script>
+  
+  <style>
+    body {
+  margin: 0px;
+  background-color: black;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.card-group-master,
+.card-group,
+.card {
+  aspect-ratio: 5/7;
+}
+.card-group-master,
+.card-group,
+.big-card {
+  width: 30vmin;
+  border-radius: 1vmin;
+}
+.card-group {position: absolute;}
+.card {
+    background-color: rgba(255,255,255,0.05);
+    position: absolute;
+    transition: transform 800ms cubic-bezier(.05,.43,.25,.95);
+}
+.buttons {
+  display: flex;
+  justify-content: space-around;
+/*   transform: translateY(100px); */
+  margin-top: 8vmin;
+}
+button {
+/*   position: absolute; */
+/*   width: 50px; */
+/*   height: 50px; */
+/*   transform: translate(100px,100px); */
+  
+  color: #db3eb1;
+  border: 6px solid #db3eb1;
+  border-radius:15px;
+  font-size: 30px;
+  cursor: pointer;
+  font-weight: bold;
+  filter: drop-shadow(0 0 15px #db3eb1) drop-shadow(0 0 50px #db3eb1) contrast(2) brightness(2);
+  transition: .5s;
+}
+#left {
+/*   transform: translate(25px,100px); */
+}
+#right {
+/*   transform: translate(150px,100px); */
+}
+button:hover {
+  color: black;
+  background-color: #db3eb1;
+  filter: drop-shadow(0 0 20px #db3eb1) contrast(2) brightness(2);
+}
+
+
+i {
+  font-size: 2rem;
+}
+
+
+
+.little-card {
+  width: 12vmin;
+  border-radius: 2vmin;
+  left:50%;
+  top:50%;
+  transform: translate(-50%,-50%);
+}
+
+.big-card:nth-child(1){
+  background-color: rgba(0,0,255,0.5);
+  transform: translateX(-10%) rotate(-4deg);
+  background-image: url("https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1771&q=80");
+  background-size: contain;
+}
+.big-card:nth-child(3){
+  background-color: rgba(0,255,0,0.5);
+  transform: rotate(-3deg);
+  background-image: url("https://images.unsplash.com/photo-1522333007-49d9d3ff4b8f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928&q=80");
+  background-size: contain;
+}
+.big-card:nth-child(5){
+  background-color: rgba(255,0,0,0.5);
+  transform: rotate(0deg);
+  background-image: url("https://images.unsplash.com/photo-1578632767115-351597cf2477?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80");
+  background-size: contain;
+}
+
+
+.big-card:nth-child(7){
+  background-color: rgba(0,255,255,0.5);
+  transform: translateX(10%) rotate(2deg);
+    background-image: url("https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80");
+  background-size: contain;
+}
+
+.little-card:nth-child(2) {
+  background-image: url("https://images.unsplash.com/photo-1541562232579-512a21360020?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80");
+   background-size: contain;
+}
+.little-card:nth-child(4) {
+  background-image: url("https://images.unsplash.com/photo-1577720643272-265f09367456?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80");
+  background-size: contain;
+}
+.little-card:nth-child(6) {
+  background-image: url("https://images.unsplash.com/photo-1580136607986-df0f19794f41?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1084&q=80");
+  background-size: contain;
+}
+.little-card:nth-child(8) {
+background-image: url("https://images.unsplash.com/photo-1634193295627-1cdddf751ebf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80");
+  background-size: contain;
+}
+
+
+.card-group:hover .big-card:nth-child(1){transform: translate(-75%, 10%) rotate(-10deg);}
+.card-group:hover .big-card:nth-child(3){transform: translateX(-25%);}
+.card-group:hover .big-card:nth-child(5){transform: translateX(25%) rotate(10deg);}
+.card-group:hover .big-card:nth-child(7){transform: translateX(75%) rotate(20deg);}
+
+.card-group:hover .little-card:nth-child(2) {transform: translate(200%,-190%) rotate(-15deg);}
+.card-group:hover .little-card:nth-child(4) {transform: translate(180%,130%) rotate(15deg);}
+.card-group:hover .little-card:nth-child(6) {transform: translate(-200%,-200%) rotate(15deg);}
+.card-group:hover .little-card:nth-child(8) {transform: translate(-290%,110%) rotate(-18deg);}
+
+
+  </style>
+
+</head>
+<body>
+  <div id = "container">
+    <div class = 'card-group-master'>
+      <div class  = 'card-group'>
+    <div class="card big-card"></div>
+    <div class="card little-card"></div>
+    <div class="card big-card"></div>
+    <div class="card little-card"></div>
+    <div class="card big-card"></div>
+    <div class="card little-card"></div>
+    <div class="card big-card"></div>
+    <div class="card little-card"></div>
+  </div>
+      <div class  = 'card-group'>
+    <div class="card big-card"></div>
+    <div class="card little-card"></div>
+    <div class="card big-card"></div>
+    <div class="card little-card"></div>
+    <div class="card big-card"></div>
+    <div class="card little-card"></div>
+    <div class="card big-card"></div>
+    <div class="card little-card"></div>
+  </div>
+      <div class  = 'card-group'>
+    <div class="card big-card"></div>
+    <div class="card little-card"></div>
+    <div class="card big-card"></div>
+    <div class="card little-card"></div>
+    <div class="card big-card"></div>
+    <div class="card little-card"></div>
+    <div class="card big-card"></div>
+    <div class="card little-card"></div>
+  </div>
+      <div class  = 'card-group'>
+    <div class="card big-card"></div>
+    <div class="card little-card"></div>
+    <div class="card big-card"></div>
+    <div class="card little-card"></div>
+    <div class="card big-card"></div>
+    <div class="card little-card"></div>
+    <div class="card big-card"></div>
+    <div class="card little-card"></div>
+  </div>
+    </div>
+      <div class="buttons">
+          <button id = 'left'>
+            <i class = "fa-solid fa-x"></i>
+          </button>
+          <button id = 'right'>
+            <i class = 'fa-solid fa-heart'></i>
+          </button>
+      </div>
+   </div>
+</body>
+</html>
